@@ -1,7 +1,10 @@
-from constants import *
 from time import time
+
 import matplotlib.pyplot as plt
 import numpy as np
+
+from constants import *
+
 
 class Visualizer:
     def __init__(self, start_time=None):
@@ -26,7 +29,8 @@ class Visualizer:
         global_progress = batch_index / AMOUNT_BATCHES
         ran_for = time() - self.start_time
 
-        self.print('Global progress:', batch_index, 'steps out of', AMOUNT_BATCHES, '-', 100 * global_progress, '% done')
+        self.print('Global progress:', batch_index, 'steps out of', AMOUNT_BATCHES, '-', 100 * global_progress,
+                   '% done')
         self.print('  Ran for', ran_for, 'seconds')
         self.print('  Expected running time', ran_for / global_progress if global_progress > 0 else '?', 'seconds')
         self.print('  Expected remaining time', ran_for / global_progress - ran_for if global_progress > 0 else '?',

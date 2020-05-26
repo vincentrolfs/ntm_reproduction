@@ -1,6 +1,8 @@
-from constants import *
 import numpy as np
 import tensorflow as tf
+
+from constants import *
+
 
 def apply_base_settings():
     np.random.seed(SEED)

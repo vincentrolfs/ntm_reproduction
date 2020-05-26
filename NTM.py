@@ -1,6 +1,8 @@
 import tensorflow as tf
 from tensorflow.python import keras
+
 from constants import *
+
 
 class NTM(keras.Model):
     def __init__(self):
