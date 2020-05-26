@@ -7,7 +7,7 @@ from utils.constants import *
 from utils.file_saver import file_saver
 
 
-class Visualizer:
+class StatusMonitor:
     def __init__(self, start_time=None):
         self.start_time = start_time or time()
         self.last_display_time = -1

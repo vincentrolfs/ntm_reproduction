@@ -4,7 +4,7 @@ from Model import Model
 from data_factory import generate_training_data
 from training.loss_function import get_loss_function
 from training.optimizer import get_optimizer
-from utils.Visualizer import Visualizer
+from utils.StatusMonitor import StatusMonitor
 from utils.base_settings import apply_base_settings
 from utils.constants import *
 from utils.file_saver import file_saver
@@ -30,15 +30,15 @@ def train_step(inputs, labels, sequence_length):
 
 
 losses = []
-visualizer = Visualizer()
+monitor = StatusMonitor()
 
 for batch_index in range(AMOUNT_BATCHES):
     inputs, labels, sequence_length = training_data[batch_index]
     loss, outputs = train_step(inputs, labels, sequence_length)
     losses.append(loss)
-    visualizer.print_progress(batch_index)
+    monitor.print_progress(batch_index)
 
     if (batch_index + 1) % PROGRESS_SAVE_INTERVAL == 0:
         file_saver.save_model(model, batch_index)
         file_saver.save_optimizer(optimizer, batch_index)
-        visualizer.save_error_visualization(batch_index, labels, outputs, sequence_length)
+        monitor.save_error_visualization(batch_index, labels, outputs, sequence_length)
