@@ -22,4 +22,4 @@ def get_training_data_batch():
     return inputs, labels, sequence_length
 
 def generate_training_data():
-    return [get_training_data_batch() for _ in range(TRAIN_STEPS)]
+    return [get_training_data_batch() for _ in range(AMOUNT_BATCHES)]

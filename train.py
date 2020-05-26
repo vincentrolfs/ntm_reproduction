@@ -53,7 +53,7 @@ def train_step(batch_index):
 losses = []
 visualizer = Visualizer()
 
-for batch_index in range(TRAIN_STEPS):
+for batch_index in range(AMOUNT_BATCHES):
   loss, outputs = train_step(batch_index)
   losses.append(loss)
   visualizer.print_progress(batch_index)
