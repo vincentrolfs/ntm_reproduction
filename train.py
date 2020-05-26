@@ -15,9 +15,7 @@ loss_function = get_loss_function()
 optimizer = get_optimizer()
 training_data = generate_training_data()
 
-def train_step(batch_index):
-    inputs, labels, sequence_length = training_data[batch_index]
-
+def train_step(inputs, labels, sequence_length):
     with tf.GradientTape() as tape:
         outputs = model(inputs, sequence_length)
 
@@ -31,10 +29,6 @@ def train_step(batch_index):
 
         optimizer.apply_gradients(zip(gradients, model.trainable_variables))
 
-    if (batch_index + 1) % PROGRESS_SAVE_INTERVAL == 0:
-        file_saver.save_model(model, batch_index)
-        file_saver.save_optimizer(optimizer, batch_index)
-
     return loss.numpy(), outputs
 
 
@@ -42,6 +36,12 @@ losses = []
 visualizer = Visualizer()
 
 for batch_index in range(AMOUNT_BATCHES):
-    loss, outputs = train_step(batch_index)
+    inputs, labels, sequence_length = training_data[batch_index]
+    loss, outputs = train_step(inputs, labels, sequence_length)
     losses.append(loss)
     visualizer.print_progress(batch_index)
+
+    if (batch_index + 1) % PROGRESS_SAVE_INTERVAL == 0:
+        file_saver.save_model(model, batch_index)
+        file_saver.save_optimizer(optimizer, batch_index)
+        visualizer.save_error_visualization(batch_index, labels, outputs, sequence_length)

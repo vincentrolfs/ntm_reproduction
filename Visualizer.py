@@ -37,7 +37,7 @@ class Visualizer:
         self.print('  Expected remaining time', ran_for / global_progress - ran_for if global_progress > 0 else '?',
                    'seconds')
 
-    def save_error_visualization(self, batch_index, labels, sequence_length, outputs):
+    def save_error_visualization(self, batch_index, labels, outputs, sequence_length):
         plt.figure(figsize=(15, 7))
 
         assert labels.shape == (BATCH_SIZE, sequence_length, NUM_BITS_PER_VECTOR)
