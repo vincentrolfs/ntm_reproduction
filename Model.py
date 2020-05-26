@@ -1,11 +1,11 @@
 import tensorflow as tf
 from tensorflow.python import keras
-from ntm.ntm import NTMCell
 
 from constants import *
+from ntm.ntm import NTMCell
 
 
-class NTM(keras.Model):
+class Model(keras.Model):
     def __init__(self):
         super().__init__()
 

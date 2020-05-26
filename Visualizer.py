@@ -36,7 +36,7 @@ class Visualizer:
         self.print('  Expected remaining time', ran_for / global_progress - ran_for if global_progress > 0 else '?',
                    'seconds')
 
-    def show_errors(self, labels, sequence_length, outputs):
+    def show_errors(self, batch_index, labels, sequence_length, outputs):
         plt.figure(figsize=(15, 7))
 
         assert labels.shape == (BATCH_SIZE, sequence_length, NUM_BITS_PER_VECTOR)
@@ -51,7 +51,6 @@ class Visualizer:
         cmap = ListedColormap(['white', '#DD7373', 'black'])
 
         plt.imshow(errors, aspect='auto', interpolation='none', cmap=cmap)
-        plt.gca().set_title('Errors')
+        plt.gca().set_title('Errors batch #' + str(batch_index + 1))
 
         plt.savefig(ERROR_VISUALIZATION_PATH)
-        plt.show()

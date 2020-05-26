@@ -1,8 +1,10 @@
-from NTM import NTM
+from Model import Model
 from Visualizer import Visualizer
+from base_settings import apply_base_settings
 from training_data import get_training_data_batch
 
-ntm = NTM()
+apply_base_settings()
+ntm = Model()
 visualizer = Visualizer()
 inputs, labels, sequence_length = get_training_data_batch()
 outputs = ntm(inputs, sequence_length)
