@@ -37,7 +37,7 @@ class Visualizer:
                    'seconds')
 
     def show_errors(self, labels, sequence_length, outputs):
-        fig, ax = plt.figure(figsize=(15, 7))
+        plt.figure(figsize=(15, 7))
 
         assert labels.shape == (BATCH_SIZE, sequence_length, NUM_BITS_PER_VECTOR)
         assert outputs.shape == (BATCH_SIZE, sequence_length, NUM_BITS_PER_VECTOR)
@@ -50,8 +50,8 @@ class Visualizer:
         from matplotlib.colors import ListedColormap
         cmap = ListedColormap(['white', '#DD7373', 'black'])
 
-        ax[1].imshow(errors, aspect='auto', interpolation='none', cmap=cmap)
-        ax[1].set_title('Errors')
+        plt.imshow(errors, aspect='auto', interpolation='none', cmap=cmap)
+        plt.gca().set_title('Errors')
 
         plt.savefig(ERROR_VISUALIZATION_PATH)
         plt.show()
