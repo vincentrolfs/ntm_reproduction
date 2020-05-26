@@ -15,14 +15,11 @@ loss_function = get_loss_function()
 optimizer = get_optimizer()
 training_data = generate_training_data()
 
+
 def train_step(inputs, labels, sequence_length):
     with tf.GradientTape() as tape:
         outputs = model(inputs, sequence_length)
-
-        # Keras's binary cross-entropy does an unexpected mean over last dimension
-        # We don't want that, so we add tf.newaxis
-        loss = loss_function(labels[..., tf.newaxis], outputs[..., tf.newaxis])
-        loss = tf.reduce_sum(loss) / inputs.shape[0]
+        loss = loss_function(inputs, labels, outputs)
 
         gradients = tape.gradient(loss, model.trainable_variables)
         gradients, _ = tf.clip_by_global_norm(gradients, MAX_GLOBAL_GRAD_NORM)
