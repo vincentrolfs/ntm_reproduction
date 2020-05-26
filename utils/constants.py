@@ -1,6 +1,6 @@
 SEED = 0
 
-OPTIMIZER_LOAD_PATH = 'optimizer_checkpoint_1590197499_29999/optimizer_checkpoint.pickle'
+OPTIMIZER_LOAD_PATH = '../optimizer_checkpoint_1590197499_29999/optimizer_checkpoint.pickle'
 MODEL_LOAD_PATH = 'model_checkpoint_1590197499_29999/model_checkpoint.ckpt'
 
 OPTIMIZER_SAVE_PATH_PREFIX = 'optimizer_checkpoint'

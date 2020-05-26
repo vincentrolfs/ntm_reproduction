@@ -1,6 +1,6 @@
 import numpy as np
 
-from constants import *
+from utils.constants import *
 
 snap_boolean = np.vectorize(lambda x: 1.0 if x > 0.5 else 0.0)
 

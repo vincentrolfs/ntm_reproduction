@@ -3,8 +3,8 @@ from time import time
 import matplotlib.pyplot as plt
 import numpy as np
 
-from FileSaver import file_saver
-from constants import *
+from utils.constants import *
+from utils.file_saver import file_saver
 
 
 class Visualizer:

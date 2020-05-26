@@ -2,7 +2,7 @@ import os
 import pickle
 from time import time
 
-from constants import *
+from utils.constants import *
 
 
 class FileSaver:

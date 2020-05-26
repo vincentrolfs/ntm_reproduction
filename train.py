@@ -1,13 +1,13 @@
 import tensorflow as tf
 
-from FileSaver import file_saver
 from Model import Model
-from Visualizer import Visualizer
-from base_settings import apply_base_settings
-from constants import *
-from loss_function import get_loss_function
-from optimizer import get_optimizer
-from training_data import generate_training_data
+from data_factory import generate_training_data
+from training.loss_function import get_loss_function
+from training.optimizer import get_optimizer
+from utils.Visualizer import Visualizer
+from utils.base_settings import apply_base_settings
+from utils.constants import *
+from utils.file_saver import file_saver
 
 apply_base_settings()
 model = Model()

@@ -2,7 +2,7 @@ import pickle
 
 import tensorflow as tf
 
-from constants import *
+from utils.constants import *
 
 
 def get_optimizer():

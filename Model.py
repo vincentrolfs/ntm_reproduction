@@ -1,8 +1,8 @@
 import tensorflow as tf
 from tensorflow.python import keras
 
-from constants import *
 from ntm.ntm import NTMCell
+from utils.constants import *
 
 
 class Model(keras.Model):

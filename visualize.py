@@ -1,7 +1,7 @@
 from Model import Model
-from Visualizer import Visualizer
-from base_settings import apply_base_settings
-from training_data import get_training_data_batch
+from data_factory import get_training_data_batch
+from utils.Visualizer import Visualizer
+from utils.base_settings import apply_base_settings
 
 apply_base_settings()
 ntm = Model()
