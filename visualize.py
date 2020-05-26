@@ -9,4 +9,4 @@ visualizer = Visualizer()
 inputs, labels, sequence_length = get_training_data_batch()
 outputs = ntm(inputs, sequence_length)
 
-visualizer.show_errors(labels, sequence_length, outputs)
+visualizer.save_error_visualization(0, labels, sequence_length, outputs)

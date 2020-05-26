@@ -31,8 +31,8 @@ class Model(keras.Model):
             unroll=True
         )
 
-        if NTM_LOAD_PATH is not None:
-            self.load_weights(NTM_LOAD_PATH)
+        if MODEL_LOAD_PATH is not None:
+            self.load_weights(MODEL_LOAD_PATH)
 
     def __call__(self, inputs, sequence_length):
         output_sequence = self.rnn(inputs)

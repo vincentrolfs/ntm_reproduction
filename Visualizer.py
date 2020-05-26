@@ -3,6 +3,7 @@ from time import time
 import matplotlib.pyplot as plt
 import numpy as np
 
+from FileSaver import file_saver
 from constants import *
 
 
@@ -36,7 +37,7 @@ class Visualizer:
         self.print('  Expected remaining time', ran_for / global_progress - ran_for if global_progress > 0 else '?',
                    'seconds')
 
-    def show_errors(self, batch_index, labels, sequence_length, outputs):
+    def save_error_visualization(self, batch_index, labels, sequence_length, outputs):
         plt.figure(figsize=(15, 7))
 
         assert labels.shape == (BATCH_SIZE, sequence_length, NUM_BITS_PER_VECTOR)
@@ -51,6 +52,7 @@ class Visualizer:
         cmap = ListedColormap(['white', '#DD7373', 'black'])
 
         plt.imshow(errors, aspect='auto', interpolation='none', cmap=cmap)
-        plt.gca().set_title('Errors batch #' + str(batch_index + 1))
+        plt.gca().set_title('Errors batch #' + str(batch_index))
 
-        plt.savefig(ERROR_VISUALIZATION_PATH)
+        plt.savefig(file_saver.format_path(ERROR_VISUALIZATION_FILENAME, batch_index,
+                                           append=ERROR_VISUALIZATION_FILE_EXTENSION))
