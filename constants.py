@@ -1,6 +1,6 @@
 SEED = 0
 
-OPTIMIZER_LOAD_PATH = 'optimizer_checkpoint_1590197499_29999'
+OPTIMIZER_LOAD_PATH = 'optimizer_checkpoint_1590197499_29999/'
 NTM_LOAD_PATH = 'model_checkpoint_1590197499_29999/'
 
 AMOUNT_BATCHES = 30000  # How many batches should we use?
