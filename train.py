@@ -39,7 +39,9 @@ for batch_index in range(AMOUNT_BATCHES):
     losses.append(loss)
 
     if (batch_index + 1) % VALIDATION_INTERVAL == 0:
+        print("VALIDATING...")
         validation_results.append(validate(model))
+        print("VALIDATED.")
 
     if (batch_index + 1) % PROGRESS_SAVE_INTERVAL == 0:
         file_saver.save_model(model, batch_index)

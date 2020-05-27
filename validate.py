@@ -7,7 +7,6 @@ from utils.base_settings import apply_base_settings
 
 validation_set = [get_batch(batch_size=1) for _ in range(VALIDATION_SET_SIZE)]
 
-
 def validate(model):
     total_error_count = 0.0
 
