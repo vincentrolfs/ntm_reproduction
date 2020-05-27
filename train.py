@@ -41,4 +41,3 @@ for batch_index in range(AMOUNT_BATCHES):
         file_saver.save_model(model, batch_index)
         file_saver.save_optimizer(optimizer, batch_index)
         file_saver.save_losses(losses, batch_index)
-        monitor.save_error_visualization(batch_index, labels, outputs, sequence_length)
