@@ -1,6 +1,7 @@
 import numpy as np
 
-from config.config_loader import MAX_SEQUENCE_LENGTH, BATCH_SIZE, NUM_BITS_PER_VECTOR, AMOUNT_BATCHES
+from config.config_loader import MAX_SEQUENCE_LENGTH, BATCH_SIZE, NUM_BITS_PER_VECTOR, AMOUNT_BATCHES, \
+    MIN_SEQUENCE_LENGTH
 
 snap_boolean = np.vectorize(lambda x: 1.0 if x > 0.5 else 0.0)
 
@@ -13,7 +14,7 @@ def generate_sequence(sequence_length):
 
 
 def get_training_data_batch():
-    sequence_length = MAX_SEQUENCE_LENGTH  # np.random.randint(low=MIN_SEQUENCE_LENGTH, high=MAX_SEQ_LEN+1)
+    sequence_length = np.random.randint(low=MIN_SEQUENCE_LENGTH, high=MAX_SEQUENCE_LENGTH + 1)
 
     main_inputs = np.asarray([generate_sequence(sequence_length) for _ in range(BATCH_SIZE)]).astype(np.float32)
     end_of_sequence_marker = np.ones([BATCH_SIZE, 1, NUM_BITS_PER_VECTOR + 1])

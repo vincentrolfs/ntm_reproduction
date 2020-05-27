@@ -7,7 +7,7 @@
   // How many vectors should a sequence contain at maximum:
   MAX_SEQUENCE_LENGTH: 20,
   // How many vectors should a sequence contain at minimum:
-  MIN_SEQUENCE_LENGTH: 2,
+  MIN_SEQUENCE_LENGTH: 1,
   // How many bits should a vector contain:
   NUM_BITS_PER_VECTOR: 8,
   // In train steps:
