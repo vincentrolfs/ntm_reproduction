@@ -1,7 +1,7 @@
 {
   CONFIG_NAME: 'copy_task',
   // How many batches should we use:
-  AMOUNT_BATCHES: 30000,
+  AMOUNT_BATCHES: 31300,
   // How many sequences should one batch contain:
   BATCH_SIZE: 32,
   // How many vectors should a sequence contain at maximum:
@@ -11,9 +11,11 @@
   // How many bits should a vector contain:
   NUM_BITS_PER_VECTOR: 8,
   // How many sequences to use for validation
-  VALIDATION_SIZE: 640,
-  // In train steps:
-  PROGRESS_SAVE_INTERVAL: 3000,
+  VALIDATION_SET_SIZE: 640,
+  // How often to save progress, in train steps:
+  VALIDATION_INTERVAL: 200,
+  // How often to save progress, in train steps:
+  PROGRESS_SAVE_INTERVAL: 3130,
   // In seconds:
   TRAINING_PROGRESS_DISPLAY_INTERVAL: 60,
 }

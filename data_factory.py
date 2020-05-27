@@ -12,11 +12,11 @@ def get_sequence(sequence_length):
     ])
 
 
-def get_batch():
+def get_batch(batch_size=BATCH_SIZE):
     sequence_length = np.random.randint(low=MIN_SEQUENCE_LENGTH, high=MAX_SEQUENCE_LENGTH + 1)
 
-    main_inputs = np.asarray([get_sequence(sequence_length) for _ in range(BATCH_SIZE)]).astype(np.float32)
-    end_of_sequence_marker = np.ones([BATCH_SIZE, 1, NUM_BITS_PER_VECTOR + 1])
+    main_inputs = np.asarray([get_sequence(sequence_length) for _ in range(batch_size)]).astype(np.float32)
+    end_of_sequence_marker = np.ones([batch_size, 1, NUM_BITS_PER_VECTOR + 1])
     empty_inputs = np.zeros_like(main_inputs)
 
     inputs = np.concatenate((main_inputs, end_of_sequence_marker, empty_inputs), axis=1).astype('float32')

@@ -22,7 +22,7 @@ class StatusMonitor:
 
         print(*args_formatted)
 
-    def print_progress(self, batch_index):
+    def print_progress(self, batch_index, validation_results):
         if (time() - self.last_display_time) < TRAINING_PROGRESS_DISPLAY_INTERVAL: return
 
         self.last_display_time = time()
@@ -36,6 +36,7 @@ class StatusMonitor:
         self.print('  Expected running time', ran_for / global_progress if global_progress > 0 else '?', 'seconds')
         self.print('  Expected remaining time', ran_for / global_progress - ran_for if global_progress > 0 else '?',
                    'seconds')
+        self.print('Validation results:\n', *validation_results)
 
     def save_error_visualization(self, batch_index, labels, outputs, sequence_length):
         fig = plt.figure(figsize=(15, 7))

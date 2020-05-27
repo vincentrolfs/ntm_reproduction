@@ -7,6 +7,8 @@
   OPTIMIZER_SAVE_FILENAME: 'optimizer_checkpoint.pickle',
   LOSSES_PATH_PREFIX: 'losses',
   LOSSES_FILENAME: 'losses.pickle',
+  VALIDATION_RESULTS_PATH_PREFIX: 'validation_results',
+  VALIDATION_RESULTS_FILENAME: 'validation_results.pickle',
   ERROR_VISUALIZATION_PATH_PREFIX: 'error_visualization',
   ERROR_VISUALIZATION_FILENAME: 'error_visualization.pdf',
   CONTROLLER_NUM_LAYERS: 1,
