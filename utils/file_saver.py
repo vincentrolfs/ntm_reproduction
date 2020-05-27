@@ -1,5 +1,6 @@
 import os
 import pickle
+from pathlib import Path
 from time import time
 
 import matplotlib.pyplot as plt
@@ -10,8 +11,7 @@ from config.config_loader import MODEL_SAVE_PATH_PREFIX, MODEL_SAVE_FILENAME, OP
 
 class FileSaver:
     def __init__(self):
-        os.mkdir(OUTPUTS_DIR)
-        os.mkdir(OUTPUTS_DIR + CONFIG_NAME)
+        Path(OUTPUTS_DIR + CONFIG_NAME).mkdir(parents=True, exist_ok=True)
 
     def save_model(self, model, batch_index):
         model_dir = self._format_path(MODEL_SAVE_PATH_PREFIX, batch_index)
