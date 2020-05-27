@@ -3,8 +3,7 @@ from time import time
 import matplotlib.pyplot as plt
 import numpy as np
 
-from config.config_loader import TRAINING_PROGRESS_DISPLAY_INTERVAL, AMOUNT_BATCHES, NUM_BITS_PER_VECTOR, BATCH_SIZE, \
-    ERROR_VISUALIZATION_FILENAME, ERROR_VISUALIZATION_FILE_EXTENSION
+from config.config_loader import TRAINING_PROGRESS_DISPLAY_INTERVAL, AMOUNT_BATCHES, NUM_BITS_PER_VECTOR, BATCH_SIZE
 from utils.file_saver import file_saver
 
 
@@ -55,5 +54,4 @@ class StatusMonitor:
         plt.imshow(errors, aspect='auto', interpolation='none', cmap=cmap)
         plt.gca().set_title('Errors batch #' + str(batch_index))
 
-        plt.savefig(file_saver.format_path(ERROR_VISUALIZATION_FILENAME, batch_index,
-                                           append=ERROR_VISUALIZATION_FILE_EXTENSION))
+        file_saver.save_error_visualization(batch_index)

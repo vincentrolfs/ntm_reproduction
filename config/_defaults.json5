@@ -1,18 +1,19 @@
 {
   SEED: 0,
+  OUTPUTS_DIR: 'outputs/',
   MODEL_SAVE_PATH_PREFIX: 'model_checkpoint',
   MODEL_SAVE_FILENAME: 'model_checkpoint.ckpt',
   OPTIMIZER_SAVE_PATH_PREFIX: 'optimizer_checkpoint',
   OPTIMIZER_SAVE_FILENAME: 'optimizer_checkpoint.pickle',
   CONTROLLER_NUM_LAYERS: 1,
   CONTROLLER_NUM_UNITS_PER_LAYER: 100,
+  // If false, we will use Adam optimizer:
   USE_RMSPROP_OPTIMIZER: false,
-  // If false, we will use Adam optimizer
   LEARNING_RATE: 0.001,
+  // Only for RMSPROP:
   MOMENTUM: 0.9,
-  // Only for RMSPROP
+  // Only for RMSPROP:
   DECAY: 0.9,
-  // Only for RMSPROP
   MAX_GLOBAL_GRAD_NORM: 50,
   ERROR_VISUALIZATION_FILENAME: 'errors',
   ERROR_VISUALIZATION_FILE_EXTENSION: '.pdf',
