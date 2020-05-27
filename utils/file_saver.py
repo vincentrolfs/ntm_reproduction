@@ -3,8 +3,6 @@ import pickle
 from pathlib import Path
 from time import time
 
-import matplotlib.pyplot as plt
-
 from config.config_loader import MODEL_SAVE_PATH_PREFIX, MODEL_SAVE_FILENAME, OPTIMIZER_SAVE_PATH_PREFIX, \
     OPTIMIZER_SAVE_FILENAME, CONFIG_NAME, OUTPUTS_DIR, ERROR_VISUALIZATION_FILENAME, ERROR_VISUALIZATION_PATH_PREFIX, \
     LOSSES_PATH_PREFIX, LOSSES_FILENAME
@@ -34,11 +32,11 @@ class FileSaver:
         with open(losses_dir + LOSSES_FILENAME, "wb+") as f:
             pickle.dump(losses, f)
 
-    def save_error_visualization(self, batch_index):
+    def save_error_visualization(self, fig, batch_index):
         error_visualization_dir = self._format_path(ERROR_VISUALIZATION_PATH_PREFIX, batch_index)
 
         os.mkdir(error_visualization_dir)
-        plt.savefig(error_visualization_dir + ERROR_VISUALIZATION_FILENAME)
+        fig.savefig(error_visualization_dir + ERROR_VISUALIZATION_FILENAME)
 
     def _format_path(self, base, batch_index, append='/'):
         t = str(int(time()))

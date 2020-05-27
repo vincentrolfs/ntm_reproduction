@@ -38,7 +38,7 @@ class StatusMonitor:
                    'seconds')
 
     def save_error_visualization(self, batch_index, labels, outputs, sequence_length):
-        plt.figure(figsize=(15, 7))
+        fig = plt.figure(figsize=(15, 7))
 
         assert labels.shape == (BATCH_SIZE, sequence_length, NUM_BITS_PER_VECTOR)
         assert outputs.shape == (BATCH_SIZE, sequence_length, NUM_BITS_PER_VECTOR)
@@ -54,4 +54,5 @@ class StatusMonitor:
         plt.imshow(errors, aspect='auto', interpolation='none', cmap=cmap)
         plt.gca().set_title('Errors batch #' + str(batch_index))
 
-        file_saver.save_error_visualization(batch_index)
+        file_saver.save_error_visualization(fig, batch_index)
+        plt.close(fig)
