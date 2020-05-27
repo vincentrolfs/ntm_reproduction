@@ -5,6 +5,10 @@
   MODEL_SAVE_FILENAME: 'model_checkpoint.ckpt',
   OPTIMIZER_SAVE_PATH_PREFIX: 'optimizer_checkpoint',
   OPTIMIZER_SAVE_FILENAME: 'optimizer_checkpoint.pickle',
+  LOSSES_PATH_PREFIX: 'losses',
+  LOSSES_FILENAME: 'losses.pickle',
+  ERROR_VISUALIZATION_PATH_PREFIX: 'error_visualization',
+  ERROR_VISUALIZATION_FILENAME: 'error_visualization.pdf',
   CONTROLLER_NUM_LAYERS: 1,
   CONTROLLER_NUM_UNITS_PER_LAYER: 100,
   // If false, we will use Adam optimizer:
@@ -15,6 +19,4 @@
   // Only for RMSPROP:
   DECAY: 0.9,
   MAX_GLOBAL_GRAD_NORM: 50,
-  ERROR_VISUALIZATION_FILENAME: 'errors',
-  ERROR_VISUALIZATION_FILE_EXTENSION: '.pdf',
 }

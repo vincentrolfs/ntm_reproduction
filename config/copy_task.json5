@@ -11,7 +11,7 @@
   // How many bits should a vector contain:
   NUM_BITS_PER_VECTOR: 8,
   // In train steps:
-  PROGRESS_SAVE_INTERVAL: 3000,
+  PROGRESS_SAVE_INTERVAL: 1,
   // In seconds:
   TRAINING_PROGRESS_DISPLAY_INTERVAL: 60,
 }
