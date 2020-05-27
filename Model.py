@@ -1,7 +1,8 @@
 import tensorflow as tf
 from tensorflow.python import keras
 
-from config.config_loader import *
+from config.config_loader import CONTROLLER_NUM_LAYERS, CONTROLLER_NUM_UNITS_PER_LAYER, NUM_BITS_PER_VECTOR, \
+    MODEL_LOAD_PATH
 from ntm.ntm import NTMCell
 
 

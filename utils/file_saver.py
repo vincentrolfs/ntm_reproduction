@@ -2,7 +2,8 @@ import os
 import pickle
 from time import time
 
-from config.config_loader import *
+from config.config_loader import MODEL_SAVE_PATH_PREFIX, MODEL_SAVE_FILENAME, OPTIMIZER_SAVE_PATH_PREFIX, \
+    OPTIMIZER_SAVE_FILENAME
 
 
 class FileSaver:

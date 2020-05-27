@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
 
-from config.config_loader import *
+from config.config_loader import SEED
 
 
 def apply_base_settings():

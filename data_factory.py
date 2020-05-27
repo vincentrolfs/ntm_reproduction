@@ -1,6 +1,6 @@
 import numpy as np
 
-from config.config_loader import *
+from config.config_loader import MAX_SEQUENCE_LENGTH, BATCH_SIZE, NUM_BITS_PER_VECTOR, AMOUNT_BATCHES
 
 snap_boolean = np.vectorize(lambda x: 1.0 if x > 0.5 else 0.0)
 

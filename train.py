@@ -1,7 +1,7 @@
 import tensorflow as tf
 
 from Model import Model
-from config.config_loader import *
+from config.config_loader import MAX_GLOBAL_GRAD_NORM, AMOUNT_BATCHES, PROGRESS_SAVE_INTERVAL
 from data_factory import generate_training_data
 from training.loss_function import get_loss_function
 from training.optimizer import get_optimizer

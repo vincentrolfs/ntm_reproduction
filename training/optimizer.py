@@ -2,7 +2,7 @@ import pickle
 
 import tensorflow as tf
 
-from config.config_loader import *
+from config.config_loader import LEARNING_RATE, MOMENTUM, DECAY, OPTIMIZER_LOAD_PATH, USE_RMSPROP_OPTIMIZER
 
 
 def get_optimizer():

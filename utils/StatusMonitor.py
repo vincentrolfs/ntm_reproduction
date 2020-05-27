@@ -3,7 +3,8 @@ from time import time
 import matplotlib.pyplot as plt
 import numpy as np
 
-from config.config_loader import *
+from config.config_loader import TRAINING_PROGRESS_DISPLAY_INTERVAL, AMOUNT_BATCHES, NUM_BITS_PER_VECTOR, BATCH_SIZE, \
+    ERROR_VISUALIZATION_FILENAME, ERROR_VISUALIZATION_FILE_EXTENSION
 from utils.file_saver import file_saver
 
 
