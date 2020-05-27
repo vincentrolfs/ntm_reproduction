@@ -1,0 +1,17 @@
+{
+  CONFIG_NAME: 'copy_task',
+  AMOUNT_BATCHES: 30000,
+  // How many batches should we use?
+  BATCH_SIZE: 32,
+  // How many sequences should one batch contain?
+  MAX_SEQUENCE_LENGTH: 20,
+  // How many vectors should a sequence contain at maximum?
+  MIN_SEQUENCE_LENGTH: 2,
+  // How many vectors should a sequence contain at minimum?
+  NUM_BITS_PER_VECTOR: 8,
+  // How many bits should a vector contain?
+  PROGRESS_SAVE_INTERVAL: 3000,
+  // In train steps
+  TRAINING_PROGRESS_DISPLAY_INTERVAL: 60,
+  // In seconds
+}

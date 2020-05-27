@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
 
-from utils.constants import *
+from config.config_loader import *
 
 
 def apply_base_settings():

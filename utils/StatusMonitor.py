@@ -3,7 +3,7 @@ from time import time
 import matplotlib.pyplot as plt
 import numpy as np
 
-from utils.constants import *
+from config.config_loader import *
 from utils.file_saver import file_saver
 
 

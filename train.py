@@ -1,12 +1,12 @@
 import tensorflow as tf
 
 from Model import Model
+from config.config_loader import *
 from data_factory import generate_training_data
 from training.loss_function import get_loss_function
 from training.optimizer import get_optimizer
 from utils.StatusMonitor import StatusMonitor
 from utils.base_settings import apply_base_settings
-from utils.constants import *
 from utils.file_saver import file_saver
 
 apply_base_settings()
