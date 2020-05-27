@@ -10,6 +10,8 @@
   MIN_SEQUENCE_LENGTH: 1,
   // How many bits should a vector contain:
   NUM_BITS_PER_VECTOR: 8,
+  // How many sequences to use for validation
+  VALIDATION_SIZE: 640,
   // In train steps:
   PROGRESS_SAVE_INTERVAL: 3000,
   // In seconds:

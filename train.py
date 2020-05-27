@@ -2,7 +2,7 @@ import tensorflow as tf
 
 from Model import Model
 from config.config_loader import MAX_GLOBAL_GRAD_NORM, AMOUNT_BATCHES, PROGRESS_SAVE_INTERVAL
-from data_factory import get_training_data_batch
+from data_factory import get_batch
 from training.loss_function import get_loss_function
 from training.optimizer import get_optimizer
 from utils.StatusMonitor import StatusMonitor
@@ -32,7 +32,7 @@ losses = []
 monitor = StatusMonitor()
 
 for batch_index in range(AMOUNT_BATCHES):
-    inputs, labels, sequence_length = get_training_data_batch()
+    inputs, labels, sequence_length = get_batch()
     loss, outputs = train_step(inputs, labels, sequence_length)
     losses.append(loss)
     monitor.print_progress(batch_index)
