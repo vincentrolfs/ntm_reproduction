@@ -12,7 +12,7 @@
   NUM_BITS_PER_VECTOR: 8,
   // How many sequences to use for validation
   VALIDATION_SET_SIZE: 640,
-  // How often to save progress, in train steps:
+  // How often to validate, in train steps:
   VALIDATION_INTERVAL: 200,
   // How often to save progress, in train steps:
   PROGRESS_SAVE_INTERVAL: 3130,
