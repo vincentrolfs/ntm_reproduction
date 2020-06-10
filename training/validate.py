@@ -1,7 +1,7 @@
 import numpy as np
 
 from config.config_loader import VALIDATION_SET_SIZE
-from data_factory import get_batch
+from data.data_factory import get_batch
 
 validation_set = [get_batch(batch_size=1) for _ in range(VALIDATION_SET_SIZE)]
 
