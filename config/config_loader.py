@@ -8,6 +8,12 @@ parser.add_argument('--load_model', metavar='MODEL_CHECKPOINT_PATH', type=str,
                     help='path to the model checkpoint. If not given, a new, untrained model is used.')
 parser.add_argument('--load_optimizer', metavar='OPTIMIZER_CHECKPOINT_PATH', type=str,
                     help='path to the optimizer checkpoint. If not given, a newly initialized optimizer is used.')
+parser.add_argument('--load_validation_results', metavar='VALIDATION_RESULTS_PATH', type=str,
+                    help='path to the validation results when evaluating results. This parameter is ignored when '
+                         'training.')
+parser.add_argument('--load_losses', metavar='LOSSES_PATH', type=str,
+                    help='path to the training losses when evaluating results. This parameter is ignored when '
+                         'training.')
 args = parser.parse_args()
 
 
@@ -26,6 +32,8 @@ config = load_config()
 
 MODEL_LOAD_PATH = args.load_model
 OPTIMIZER_LOAD_PATH = args.load_optimizer
+VALIDATION_RESULTS_LOAD_PATH = args.load_validation_results
+LOSSES_LOAD_PATH = args.load_losses
 
 CONFIG_NAME = config['CONFIG_NAME']
 AMOUNT_BATCHES = config['AMOUNT_BATCHES']
