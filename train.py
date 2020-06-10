@@ -5,10 +5,10 @@ from config.config_loader import MAX_GLOBAL_GRAD_NORM, AMOUNT_BATCHES, PROGRESS_
 from data_factory import get_batch
 from training.loss_function import get_loss_function
 from training.optimizer import get_optimizer
+from training.validate import validate
 from utils.StatusMonitor import StatusMonitor
 from utils.base_settings import apply_base_settings
 from utils.file_saver import file_saver
-from validate import validate
 
 apply_base_settings()
 model = Model()
