@@ -10,6 +10,8 @@ from utils.StatusMonitor import StatusMonitor
 from utils.base_settings import apply_base_settings
 from utils.file_saver import file_saver
 
+assert __name__ == '__main__'
+
 apply_base_settings()
 model = Model()
 loss_function = get_loss_function()
