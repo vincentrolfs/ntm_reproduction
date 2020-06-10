@@ -11,6 +11,7 @@ def validate(model):
     total_error_count = 0.0
 
     for inputs, labels, sequence_length in validation_set:
+        # Batch size for validation is 1:
         assert len(inputs) == 1
         assert len(labels) == 1
         outputs = model(inputs, sequence_length)
