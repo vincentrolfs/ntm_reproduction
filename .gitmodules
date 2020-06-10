@@ -1,3 +1,0 @@
-[submodule "ntm"]
-	path = ntm
-	url = git@github.com:HotThoughts/NeuralTuringMachine.git
