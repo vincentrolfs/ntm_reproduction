@@ -11,7 +11,7 @@ from config.config_loader import CONTROLLER_NUM_LAYERS, CONTROLLER_NUM_UNITS_PER
 # ntm/ntm.py tries to import from ntm/utils.py, which Python does not find
 sys.path.append("ntm/")
 from ntm import NTMCell
-
+sys.path.pop()
 
 class Model(keras.Model):
     def __init__(self):
