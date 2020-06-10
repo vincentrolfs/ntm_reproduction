@@ -1,0 +1,3 @@
+[submodule "ntm"]
+	path = ntm
+	url = https://github.com/wchen342/NeuralTuringMachine.git

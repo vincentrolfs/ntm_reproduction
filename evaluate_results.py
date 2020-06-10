@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from config.config_loader import VALIDATION_INTERVAL, BATCH_SIZE, VALIDATION_RESULTS_LOAD_PATH, LOSSES_LOAD_PATH
-from utils.base_settings import apply_base_settings
+from utilities.base_settings import apply_base_settings
 
 assert __name__ == '__main__'
 

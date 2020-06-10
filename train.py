@@ -6,9 +6,9 @@ from data_factory import get_batch
 from training.loss_function import get_loss_function
 from training.optimizer import get_optimizer
 from training.validate import validate
-from utils.StatusMonitor import StatusMonitor
-from utils.base_settings import apply_base_settings
-from utils.file_saver import file_saver
+from utilities.StatusMonitor import StatusMonitor
+from utilities.base_settings import apply_base_settings
+from utilities.file_saver import file_saver
 
 assert __name__ == '__main__'
 

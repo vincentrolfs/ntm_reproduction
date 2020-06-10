@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from config.config_loader import TRAINING_PROGRESS_DISPLAY_INTERVAL, AMOUNT_BATCHES, NUM_BITS_PER_VECTOR, BATCH_SIZE
-from utils.file_saver import file_saver
+from utilities.file_saver import file_saver
 
 
 class StatusMonitor:

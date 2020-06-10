@@ -1,9 +1,16 @@
+import sys
+
 import tensorflow as tf
 from tensorflow.python import keras
 
 from config.config_loader import CONTROLLER_NUM_LAYERS, CONTROLLER_NUM_UNITS_PER_LAYER, NUM_BITS_PER_VECTOR, \
     MODEL_LOAD_PATH
-from ntm.ntm import NTMCell
+
+# This dirty hack is needed in order to import NTMCell correctly
+# If the next line is missing, we cannot import successfully, because
+# ntm/ntm.py tries to import from ntm/utils.py, which Python does not find
+sys.path.append("ntm/")
+from ntm import NTMCell
 
 
 class Model(keras.Model):
