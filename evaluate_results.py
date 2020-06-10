@@ -32,9 +32,11 @@ fig, ax = plt.subplots(1, 2, figsize=(7, 15))
 ax[0].plot(batch_indices, losses)
 ax[0].set_xlabel("Batch index")
 ax[0].set_ylabel("Loss")
+ax[0].set_title("Losses")
 
 ax[1].plot(sequence_numbers, validation_results)
 ax[1].set_xlabel("Sequence number")
-ax[1].set_ylabel("Average number of mistakes per sequence")
+ax[1].set_ylabel("Mistakes per sequence")
+ax[1].set_title("Average number of mistakes per sequence")
 
 plt.show()
