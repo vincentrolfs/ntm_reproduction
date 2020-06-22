@@ -1,6 +1,6 @@
 import numpy as np
 
-from config.config_loader import MAX_SEQUENCE_LENGTH, BATCH_SIZE, NUM_BITS_PER_VECTOR, MIN_SEQUENCE_LENGTH
+from config.config_loader import MAX_SEQUENCE_LENGTH, BATCH_SIZE, NUM_BITS_PER_VECTOR, MIN_SEQUENCE_LENGTH, SORT_LABELS
 
 snap_boolean = np.vectorize(lambda x: 1.0 if x > 0.5 else 0.0)
 
@@ -12,6 +12,10 @@ def get_sequence(sequence_length):
     ])
 
 
+def sort_lexicographically(array):
+    return array[np.lexsort(np.rot90(array))]
+
+
 def get_batch(batch_size=BATCH_SIZE):
     sequence_length = np.random.randint(low=MIN_SEQUENCE_LENGTH, high=MAX_SEQUENCE_LENGTH + 1)
 
@@ -21,5 +25,8 @@ def get_batch(batch_size=BATCH_SIZE):
 
     inputs = np.concatenate((main_inputs, end_of_sequence_marker, empty_inputs), axis=1).astype('float32')
     labels = main_inputs[:, :, :NUM_BITS_PER_VECTOR].astype('float32')
+
+    if SORT_LABELS:
+        labels = np.array([sort_lexicographically(batch) for batch in labels])
 
     return inputs, labels, sequence_length
