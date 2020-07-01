@@ -1,0 +1,27 @@
+{
+  CONFIG_NAME: 'associative_recall_task',
+  // How many batches should we use:
+  AMOUNT_BATCHES: 31300,
+  // How many sequences should one batch contain:
+  BATCH_SIZE: 32,
+  // How many vectors should a sequence contain at maximum:
+  // This must be divisible by ITEM_SIZE!
+  MAX_SEQUENCE_LENGTH: 18,
+  // How many vectors should a sequence contain at minimum:
+  // This must be divisible by ITEM_SIZE and must fit at least two items!
+  MIN_SEQUENCE_LENGTH: 6,
+  // How many bits should a vector contain:
+  NUM_BITS_PER_VECTOR: 6,
+  // How many sequences to use for validation
+  VALIDATION_SET_SIZE: 640,
+  // How often to validate, in train steps:
+  VALIDATION_INTERVAL: 200,
+  // How often to save progress, in train steps:
+  PROGRESS_SAVE_INTERVAL: 3130,
+  // In seconds:
+  TRAINING_PROGRESS_DISPLAY_INTERVAL: 60,
+
+  ASSOCIATIVE_RECALL_MODE: true,
+  // How many vectors constitute one item:
+  RECALL_ITEM_SIZE: 3,
+}
