@@ -42,9 +42,9 @@ class Model(keras.Model):
         if MODEL_LOAD_PATH is not None:
             self.load_weights(MODEL_LOAD_PATH)
 
-    def __call__(self, inputs, sequence_length):
+    def __call__(self, inputs, size_of_relevant_output):
         output_sequence = self.rnn(inputs)
-        output_logits = output_sequence[:, sequence_length + 1:, :]
+        output_logits = output_sequence[:, -size_of_relevant_output:, :]
         outputs = tf.sigmoid(output_logits)
 
         return outputs

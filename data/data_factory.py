@@ -41,4 +41,4 @@ def get_batch(batch_size=BATCH_SIZE):
 
     inputs = np.concatenate((main_inputs, end_of_sequence_marker, empty_inputs), axis=1).astype('float32')
 
-    return inputs, labels, sequence_length
+    return inputs, labels

@@ -9,11 +9,11 @@ validation_set = [get_batch(batch_size=1) for _ in range(VALIDATION_SET_SIZE)]
 def validate(model):
     total_error_count = 0.0
 
-    for inputs, labels, sequence_length in validation_set:
+    for inputs, labels in validation_set:
         # Batch size for validation is 1:
         assert len(inputs) == 1
         assert len(labels) == 1
-        outputs = model(inputs, sequence_length)
+        outputs = model(inputs, labels.shape[1])
         assert len(outputs) == 1
 
         error_count = np.sum(np.abs(labels[0] - np.round(outputs[0])))
