@@ -13,7 +13,6 @@
   ERROR_VISUALIZATION_FILENAME: 'error_visualization.pdf',
   CONTROLLER_NUM_LAYERS: 1,
   CONTROLLER_NUM_UNITS_PER_LAYER: 100,
-  SORT_LABELS: false,
   // If false, we will use Adam optimizer:
   USE_RMSPROP_OPTIMIZER: false,
   LEARNING_RATE: 0.001,
@@ -22,4 +21,8 @@
   // Only for RMSPROP:
   DECAY: 0.9,
   MAX_GLOBAL_GRAD_NORM: 50,
+  SORT_LABELS: false,
+  REPEAT_LABELS: false,
+  MIN_LABEL_REPETITIONS: null,
+  MAX_LABEL_REPETITIONS: null,
 }
