@@ -1,5 +1,5 @@
 {
-  CONFIG_NAME: 'copy_task',
+  CONFIG_NAME: 'sorting_task',
   // How many batches should we use:
   AMOUNT_BATCHES: 31300,
   // How many sequences should one batch contain:
