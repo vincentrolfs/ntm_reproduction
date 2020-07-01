@@ -30,6 +30,9 @@ def get_batch(batch_size=BATCH_SIZE):
     empty_inputs = np.zeros_like(main_inputs)
     labels = main_inputs[:, :, :NUM_BITS_PER_VECTOR].astype('float32')
 
+    if SORT_LABELS:
+        labels = np.array([sort_lexicographically(batch) for batch in labels])
+
     if REPEAT_LABELS:
         num_repetitions = np.random.randint(low=MIN_LABEL_REPETITIONS, high=MAX_LABEL_REPETITIONS + 1)
         end_of_sequence_marker[:, :, -1] = num_repetitions / MAX_LABEL_REPETITIONS
@@ -37,8 +40,5 @@ def get_batch(batch_size=BATCH_SIZE):
         labels = repeat(labels, num_repetitions)
 
     inputs = np.concatenate((main_inputs, end_of_sequence_marker, empty_inputs), axis=1).astype('float32')
-
-    if SORT_LABELS:
-        labels = np.array([sort_lexicographically(batch) for batch in labels])
 
     return inputs, labels, sequence_length
