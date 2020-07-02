@@ -1,7 +1,7 @@
 {
   CONFIG_NAME: 'sorting_task',
   // How many batches should we use:
-  AMOUNT_BATCHES: 31300,
+  AMOUNT_BATCHES: 300,
   // How many sequences should one batch contain:
   BATCH_SIZE: 32,
   // How many vectors should a sequence contain at maximum:
@@ -11,11 +11,11 @@
   // How many bits should a vector contain:
   NUM_BITS_PER_VECTOR: 8,
   // How many sequences to use for validation
-  VALIDATION_SET_SIZE: 640,
+  VALIDATION_SET_SIZE: 2,
   // How often to validate, in train steps:
-  VALIDATION_INTERVAL: 200,
+  VALIDATION_INTERVAL: 100,
   // How often to save progress, in train steps:
-  PROGRESS_SAVE_INTERVAL: 3130,
+  PROGRESS_SAVE_INTERVAL: 10,
   // In seconds:
   TRAINING_PROGRESS_DISPLAY_INTERVAL: 60,
   SORT_LABELS: true
