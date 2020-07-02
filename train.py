@@ -18,9 +18,9 @@ loss_function = get_loss_function()
 optimizer = get_optimizer()
 
 
-def train_step(inputs, labels, sequence_length):
+def train_step(inputs, labels):
     with tf.GradientTape() as tape:
-        outputs = model(inputs, sequence_length)
+        outputs = model(inputs, labels.shape[1])
         loss = loss_function(inputs, labels, outputs)
 
         gradients = tape.gradient(loss, model.trainable_variables)
@@ -36,8 +36,8 @@ validation_results = []
 monitor = StatusMonitor()
 
 for batch_index in range(AMOUNT_BATCHES):
-    inputs, labels, sequence_length = get_batch()
-    loss, outputs = train_step(inputs, labels, sequence_length)
+    inputs, labels = get_batch()
+    loss, outputs = train_step(inputs, labels)
     losses.append(loss)
 
     if (batch_index + 1) % VALIDATION_INTERVAL == 0:
