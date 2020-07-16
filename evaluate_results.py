@@ -3,7 +3,8 @@ import pickle
 import matplotlib.pyplot as plt
 import numpy as np
 
-from config.config_loader import VALIDATION_INTERVAL, BATCH_SIZE, VALIDATION_RESULTS_LOAD_PATH, LOSSES_LOAD_PATH
+from config.config_loader import VALIDATION_INTERVAL, BATCH_SIZE, VALIDATION_RESULTS_LOAD_PATH, LOSSES_LOAD_PATH, \
+    CONFIG_NAME
 from utilities.base_settings import apply_base_settings
 
 assert __name__ == '__main__'
@@ -27,7 +28,7 @@ sequence_numbers = BATCH_SIZE * VALIDATION_INTERVAL * (1 + np.array(range(len(va
 print("Losses: \n", losses)
 print("Validation results: \n", validation_results)
 
-fig, ax = plt.subplots(1, 2, figsize=(7, 15))
+fig, ax = plt.subplots(1, 2, figsize=(15, 7))
 
 ax[0].plot(batch_indices, losses)
 ax[0].set_xlabel("Batch index")
@@ -39,4 +40,6 @@ ax[1].set_xlabel("Sequence number")
 ax[1].set_ylabel("Mistakes per sequence")
 ax[1].set_title("Average number of mistakes per sequence")
 
-plt.show()
+plt.savefig("figures/" + CONFIG_NAME + ".pdf")
+
+#plt.show()
