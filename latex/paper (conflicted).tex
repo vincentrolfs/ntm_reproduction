@@ -1,0 +1,390 @@
+\documentclass[12pt,twoside]{article}
+
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage[section]{placeins}
+\usepackage{xcolor}
+\usepackage{breakcites}
+\usepackage{lineno}
+\usepackage[colorinlistoftodos]{todonotes}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[colorlinks = true,
+            linkcolor = black,
+            urlcolor  = black,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+\usepackage{etoolbox}
+\makeatletter
+%\patchcmd\@combinedblfloats{\box\@outputbox}{\unvbox\@outputbox}{}{\errmessage{\noexpand\@combinedblfloats could not be patched}%
+%}%
+%\makeatother
+
+\usepackage{natbib}
+
+\newcommand{\taskFigure}[1]{{\centering{
+\makebox[\textwidth][c]{\includegraphics[width=\textwidth,trim={2cm 0cm 3cm 0cm},clip]{#1}}
+}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Meta informations:
+\newcommand{\trauthor}{Vincent Rolfs, Yiyao Wei}
+\newcommand{\trtype}{Seminar Paper} %{Seminararbeit} %{Proseminararbeit}
+\newcommand{\trcourse}{Neural Networks}
+\newcommand{\trtitle}{Neural Turing Machines}
+%\newcommand{\trmatrikelnummer}{6543210}
+\newcommand{\tremail}{vincent.rolfs@studium.uni-hamburg.de\\9wei@informatik.uni-hamburg.de}
+\newcommand{\trarbeitsbereich}{Knowledge Technology, WTM}
+\newcommand{\trdate}{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Languages:
+
+% Falls die Ausarbeitung in Deutsch erfolgt:
+% \usepackage[german]{babel}
+% \usepackage[T1]{fontenc}
+% \usepackage[latin1]{inputenc}
+% \usepackage[latin9]{inputenc}
+% \selectlanguage{german}
+
+% If the thesis is written in English:
+\usepackage[english]{babel}
+\selectlanguage{english}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bind packages:
+\usepackage{acronym}                    % Acronyms
+%\usepackage{algorithmic}								% Algorithms and Pseudocode
+%\usepackage{algorithm}									% Algorithms and Pseudocode
+\usepackage{amsfonts}                   % AMS Math Packet (Fonts)
+\usepackage{amsmath}                    % AMS Math Packet
+\usepackage{amssymb}                    % Additional mathematical symbols
+\usepackage{amsthm}
+\usepackage{booktabs}                   % Nicer tables
+%\usepackage[font=small,labelfont=bf]{caption} % Numbered captions for figures
+\usepackage{color}                      % Enables defining of colors via \definecolor
+\definecolor{uhhRed}{RGB}{254,0,0}		  % Official Uni Hamburg Red
+\definecolor{uhhGrey}{RGB}{122,122,120} % Official Uni Hamburg Grey
+\usepackage{fancybox}                   % Gleichungen einrahmen
+\usepackage{fancyhdr}										% Packet for nicer headers
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{text} = [rectangle, minimum width=3cm, minimum height=1cm,text centered]
+\tikzstyle{box} = [rectangle, minimum width=3cm, minimum height=1cm,text centered, draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+%\usepackage[outer=3.35cm]{geometry} 	  % Type area (size, margins...) !!!Release version
+%\usepackage[outer=2.5cm]{geometry} 		% Type area (size, margins...) !!!Print version
+%\usepackage{geometry} 									% Type area (size, margins...) !!!Proofread version
+\usepackage[outer=3.15cm]{geometry} 	  % Type area (size, margins...) !!!Draft version
+\geometry{a4paper,body={5.8in,9in}}
+
+\usepackage{graphicx}                   % Inclusion of graphics
+%\usepackage{latexsym}                  % Special symbols
+\usepackage{longtable}									% Allow tables over several parges
+\usepackage{listings}                   % Nicer source code listings
+\usepackage{multicol}										% Content of a table over several columns
+\usepackage{multirow}										% Content of a table over several rows
+\usepackage{rotating}										% Alows to rotate text and objects
+\usepackage[hang]{subfigure}            % Allows to use multiple (partial) figures in a fig
+%\usepackage[font=footnotesize,labelfont=rm]{subfig}	% Pictures in a floating environment
+\usepackage{tabularx}										% Tables with fixed width but variable rows
+\usepackage{url,xspace,boxedminipage}   % Accurate display of URLs
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configurationen:
+
+\hyphenation{whe-ther} 									% Manually use: "\-" in a word: Staats\-ver\-trag
+
+%\lstloadlanguages{C}                   % Set the default language for listings
+\DeclareGraphicsExtensions{.pdf,.svg,.jpg,.png,.eps} % first try pdf, then eps, png and jpg
+\graphicspath{{./src/}} 								% Path to a folder where all pictures are located
+\pagestyle{fancy} 											% Use nicer header and footer
+
+% Redefine the environments for floating objects:
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.9} 			  %Standard: 0.7
+\renewcommand{\bottomfraction}{0.5}		  %Standard: 0.3
+\renewcommand{\textfraction}{0.1}		  	%Standard: 0.2
+\renewcommand{\floatpagefraction}{0.8} 	%Standard: 0.5
+
+% Tables with a nicer padding:
+\renewcommand{\arraystretch}{1.2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Additional 'theorem' and 'definition' blocks:
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{theorem}{Satz}[section]		% Wenn in Deutsch geschrieben wird.
+\newtheorem{axiom}{Axiom}[section]
+%\newtheorem{axiom}{Fakt}[chapter]			% Wenn in Deutsch geschrieben wird.
+%Usage:%\begin{axiom}[optional description]%Main part%\end{fakt}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+%Additional types of axioms:
+\newtheorem{lemma}[axiom]{Lemma}
+\newtheorem{observation}[axiom]{Observation}
+
+%Additional types of definitions:
+\theoremstyle{remark}
+%\newtheorem{remark}[definition]{Bemerkung} % Wenn in Deutsch geschrieben wird.
+\newtheorem{remark}[definition]{Remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Provides TODOs within the margin:
+\newcommand{\TODO}[1]{\marginpar{\emph{\small{{\bf TODO: } #1}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abbreviations and mathematical symbols
+\newcommand{\modd}{\text{ mod }}
+\newcommand{\RS}{\mathbb{R}}
+\newcommand{\NS}{\mathbb{N}}
+\newcommand{\ZS}{\mathbb{Z}}
+\newcommand{\dnormal}{\mathit{N}}
+\newcommand{\duniform}{\mathit{U}}
+
+\newcommand{\erdos}{Erd\H{o}s}
+\newcommand{\renyi}{-R\'{e}nyi}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document:
+\begin{document}
+\renewcommand{\headheight}{14.5pt}
+
+\fancyhead{}
+\fancyhead[LE]{ \slshape \trauthor}
+\fancyhead[LO]{ \slshape \trtitle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Cover Header:
+\begin{titlepage}
+	\begin{flushleft}
+		Universit\"at Hamburg\\
+		Department Informatik\\
+		\trarbeitsbereich\\
+	\end{flushleft}
+	\vspace{3.5cm}
+	\begin{center}
+		\huge \trtitle\\
+	\end{center}
+	\vspace{3.5cm}
+	\begin{center}
+		\normalsize\trtype\\
+		[0.2cm]
+		\Large\trcourse\\
+		[1.5cm]
+		\Large \trauthor\\
+		[0.2cm]
+	%	\normalsize Matr.Nr. \trmatrikelnummer\\
+	%	[0.2cm]
+		\normalsize\tremail\\
+		[1.5cm]
+		\Large \trdate
+	\end{center}
+	\vfill
+\end{titlepage}
+
+	%backsite of cover sheet is empty!
+\thispagestyle{empty}
+\hspace{1cm}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abstract:
+
+% Abstract gives a brief summary of the main points of a paper:
+\section*{Abstract}
+
+
+
+
+% Lists:
+\setcounter{tocdepth}{2} 					% depth of the table of contents (for Seminars 2 is recommented)
+\tableofcontents
+\pagenumbering{arabic}
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Content:
+
+% the actual content, usually separated over a number of sections
+% each section is assigned a label, in order to be able to put a
+% crossreference to it
+
+\section{Introduction}
+\label{sec:introduction}
+Around the '50s, the mathematical computer model Turing machines along with Von Neumann architecture accelerate the birth of digital computers. The basic principle of Von Neumann architecture is that elementary operations, logical flow control, and external memory are the three fundamental mechanisms for the design of general-purpose digital computers~\cite{von}. This trend (later termed symbolism) not only inspired computer scientists and engineers to build amazing devices such as digtial computers, but also enriched psychologies and many other researchers to try to understand knowledge processing and to explain how cognition implemented in the human brain. At that time, people believe that the human cognitive process or thinking is just a pure symbol-manipulation process that follows a set of instructions.
+
+The next movement in AI and cognitive science is connectionism, which claims that information is coded in a distrubuted fashion in the neural substrate. Artificial Neural networks are one of the most successful modeling techniques out of connectionsim from nowadays point of view. Around the same time, the study of human cognition from empirical psychology and neuroscience started to reveal the mechanism of working memory, and its limitations.
+
+With the advent of recurrent neural networks (RNNs), artificial networks start to have some short term memory. However, the amount of internal memory is far from efficient for solving complicated tasks. Even the powerful LSTM (long short-term memory) still suffers from forgetting after a short period of time~\cite{lstm-forget}. Moreover, the memory inside the networks is difficult to access and interact with externally.
+
+Neural Turing Machine (NTM) is a novel machine learning architecture that augments a traditional neural network with external memory and aims to enable the network to learn an algorithm that interacts with this memory. This is done in a differentiable way so that methods like gradient descent are applicable. In other words, all operations in this architecture are differentiable so we can optimize the model with backpropagation. The architecture of this hybrid system is analogous to Turing machines or Von Neumann architecture, so the authors call it Neural Turing Machines, just like what Turing did to finite state machines (coupling an infinitely long memory tape to finite state machines). According to the experiment results, NTMs outperform LSTMs on all five tasks~\cite{original-ntm}. They are copying, repeat copying, associative recall, dynamic N-Grams and priority sort.
+
+In this report, our goal is to investigate the capabilities of NTMs,\todo{Change this according to our experiments} with a comparison between other memory augmented neural networks. The focus is on replicating the results from \cite{implementing-ntm} on copying, repeat copying, and associative recall, as well as implementing the sorting task.
+
+\section{Background}
+\label{sec:backgroud}
+To better understand NTMs and its root, we first talk about what the normal Turing machines are, and its impact on modern computer and on theoretical computer science. We then give a brief history of Memory Augmented Neural Networks, including the original paper by Graves et. al that proposed Neural Turing Machines \cite{original-ntm}, the paper by Collier and Beel that presents a stable implementation of NTMs \cite{implementing-ntm}, as well as the paper by Gravel et. al that introduced the Differentiable Neural Computer (DNC), an extension of the NTM \cite{original-dnc}. Furthermore, we explain how a NTM works.
+
+\subsection{Turing Machines}
+First introduced by the mathematician Alan Turing in 1936, Turing Machines~\cite{turing} are hypothetical devices that can simulate any computable algorithm. In Turing's original paper, he described the term ``automatic machine" as a finite state machine that equips a ``head" moving in the direction of left or right to write to and read symbols from a tape. Tapes are composed of many individual cells. Each symbol goes into exactly one cell. And there is a finite number of symbols that can be written to the tape, denoted by 0 and 1. We can see the tape here as an external memory for the finite state machine. Based on what it reads from the tape and instruction from current state, the head can make the next movement on the tape. For example, the head can move to the next cell to the right and write a symbol on it, erase a symbol on current position or just move 3 cells left, and so on. Theoretically, Turing machines are capable of performing the logic of arbitrary computations as long as the tape is infinite long.
+
+Turing machines have many types: deterministic, non-deterministic, single head, multiple heads, and so on. All types of Turing machines can be stimulated by a universal Turing machine on arbitrary input~\cite{turing1938}. This means no matter which type of Turing machines, they all share the same definition and properties of the universal Turing machine. Nevertheless, the concept of Turing Machines is one of the fundamental models for the arithmetic operation of the digital computer.
+\subsection{Memory Augmented Neural Networks}
+\subsubsection{Long Short-Term Memory}
+LSTM is a variant of recurrent neural networks (RNN). Unlike Turing Machines, the family of RNNs introduces directed circles (internal vectors) to store memory of past events and external inputs.
+One advantage of RNNs is that interanl states are dynamic and distributed cross the network. The dynamic state is the key because the property unlocks the potential of context-dependent computation. In addition, the distribution of states also allows RNNs to do significantly larger memory and computational operations~\cite{original-ntm}. As a result, RNNs like LSTM can better handle data in temporal space over other machine learning algorithms. What's more, RNNs are been proven to be \textit{Turing-complete}~\cite{RNNs-Turing-complete}, means that in principle we can use RNNs to solve arbitrary computational problems. Note that by assumption, the memory space and running time do not have a  limit. Although Turing-complete  machines are guaranteed to output a result, we don't know how much memory it needs, and how long it takes.
+
+Since LSTM is a powful RNN, it is the ideal baseline for comparasion between memory augmented neural nets. We use vanilla LSTM cell directly from TensorFlow.
+\subsubsection{Neural Turing Machines}
+Gradient-based neural networks perform optimization using gradient descent, which requires the differentiability of the function it observes. NTM~\cite{original-ntm} takes advantage of it. By coupling an external memory space, the neural networks can simulate an end-to-end differentiable computer. In other words, external memory is essential for neural nets to learn to perform programs that computers can stimulate, but machine learning models are struggling with. Like Turing machines, the external memory is independent of heads and acts as a knowledge base. In contrast to Turing machines and digital computers, NTMs interact with memory by portions, instead of by a single cell.
+
+%\begin{figure}[h!]
+%    \centering
+%    \begin{tikzpicture}[node distance=2cm]
+%        \node (input) [text] {External Input};
+%        \node (output) [text, right of=input, xshift=2cm] {External Output};
+%        \node (controller) [box, below of=input, xshift=2cm] {Controller};
+%        \node (read) [box, below of=controller, xshift=-2cm] {Read Heads};
+%        \node (write) [box, right of=read, xshift=2cm] {Write Heads};
+%        \node (memory) [box, minimum width=8cm, below of=controller, yshift=-2cm] {Memory};
+%
+%        \draw [arrow] (input) -- (controller);
+%        \draw [arrow] (controller) -- (output);
+%        \draw [arrow] (controller) -- (read);
+%        \draw [arrow] (read) -- (controller);
+%        \draw [arrow] (controller) -- (write);
+%        \draw [arrow] (memory) -- (read);
+%        \draw [arrow] (write) -- (memory);
+%    \end{tikzpicture}
+%
+%    \caption{High-level Architecture of NTMs~\cite{original-ntm}. The controller is a recurrent or feedforward neural networks. The read head selects portions of information from the memory, passes it to the controller. The write head then uses the information from controller to modify the previous selected portions in the memory. The memory is a matrix with real numbers.}
+%    \label{fig:architecture}
+%\end{figure}
+
+Since the memory matrix is very large, it is better to focus on a specific region of the memory when heads interact with memory. In order to do this, the author introduces a selective (soft) attention model to weighting over portions of the memory. This is done by the controller. At each timestep, the controller returns a parameterized distribution over the locations in the memory matrix. In the view of Turing machines, these parameterized outputs of neural nets are essentially the "heads" since they are responsible for processing read and write operations. Both read and write heads receive its own normalized weighting matrix over the locations in the memory. The heads then use the inforamtion to determine which the head interacts at each location.
+
+
+Additionally, this internal weighting can be computed follow either or both content-based and location-based addressing mechanisms. The benefit of using two addressing mechanisms for weighting is to enable distinct modes of the interaction between the heads and the memory matrix. If the controller only uses the content key, the interaction looks like getting information from an associative map. If the controller only uses the location, the interaction is more like iterative shifting (list iterator). If using both, the interaction then would be slicing an array from a matrix according to the indexes we have. Hence, each mode can be seen as a simulation of certain kinds of data structures and accessors.
+
+
+Despite the fact that the code of original NTMs is not open source with the publishing of the paper~\cite{original-ntm} in 2014, many researchers were excited about it and gave their own implementations
+\footnote{\url{https://github.com/snowkylin/ntm}}\footnote{\url{https://github.com/chiggum/Neural-Turing-Machines}}\footnote{\url{https://github.com/yeoedward/Neural-Turing-Machine}}\footnote{\url{https://github.com/loudinthecloud/pytorch-ntm}}\footnote{\url{https://github.com/camigord/Neural-Turing-Machine}}\footnote{\url{https://github.com/snipsco/ntm-lasagne}}\footnote{\url{https://github.com/carpedm20/NTM-tensorflow}}
+written in a variety of machine learning frameworks (Theano, TensorFlow and PyTorch). However, many of these implementations are not very stable. Occasionally people who tried to their implementation reportd failure on training due to the NaN value of gradients. Finally in 2018, \cite{implementing-ntm} open-sourced their successful implementation of NTMs. After a series of careful experimentation. They argue that the stability and performance of NTMs highly depend on how NTMs initialize the memory contents. Results show that NTMs initializing memory contents with a small constant values converge on average 2 times faster, compared to other initialization schemes that they've tried (learned initialization and random initialization).
+
+\subsubsection{Differentiable Neural Computer}
+Differentiable Neural Computer~\cite{original-dnc} is an extension of the NTM.
+With all the properties of NTMs, DNC updated the addressing mechanisms \todo{Write more\ldots}
+
+\section{Approach}
+In this section, we will introduce four tasks that we used to test the capabilities of the NTMs. Our goal is to investigate the capabilities of NTMs. We not only try to replicate the results in \cite{implementing-ntm}, but also evaluate NTMs on a novel sorting task. The first three tasks, ``Copy", ``Repeat Copy", and ``Associative Recall", are originally proposed in the original paper \cite{original-ntm} and are tested in the implementation \cite{implementing-ntm}, where they provide a simple way to test to what extent the controller can learn to correctly interact with its memory.
+
+For the fourth tasks, we wanted to test to what extent the NTMs is capable of learning an algorithm for an everyday programming problem: Sorting.
+
+In conclusion, the tasks in our experiments are "Copy", "Repeat Copy", "Associative Recall" and "Sorting".
+
+Occasionally, we found that the implementation paper \cite{implementing-ntm} did not provide complete details for how the tasks were set up. In these cases, we consulted the code in the implementation directly \cite{ntm-github}. We try to give all the details for reproducing the experiments in this paper.
+
+For implementing the tasks, we used the existing NTM implementation announced in \cite{implementing-ntm} and added our own code on top of this in order to make the testing more streamlined, clean and reproducible. However, since the code from \cite{implementing-ntm} was written for TensorFlow version 1, we opted to use a version of the code that was ported to TensorFlow version 2 by another user \cite{ntm-tf2-github}.
+
+\subsection{Copy}
+The idea of the copy task is to present the Neural Turing Machine with a long sequence of information, which the network has to reproduce as precisely as possible. This directly tests the NTM's ability to store and reproduce information.
+
+\subsubsection{Network inputs}\label{sc-copy-inputs}\todo{Could add some example images, as used in [2]}
+More precisely, an input to the network contains a sequence of 8-bit binary vectors plus a delimiter flag at the end of each vector. Thus, each vector contains nine elements, each of which is equal to $0$ or $1$. The last value is the delimiter flag and is always zero, the other values are sampled uniformly at random.
+
+The length of the vector sequence, i.e. the amount of vectors in the input, is between $1$ and $20$ inclusive and is also sampled uniformly at random. Because the network cannot know how many input vectors are expected, we always include a final delimiter vector, which has nine elements, all of which are $1$. In this way, the network can determine when the input sequence has ended, because only the final delimiter vector has its last bit set to $1$.
+
+We conclude that an input always consists of $2$ to $21$ vectors containing $9$ bits, including the delimiter vector.
+
+\subsubsection{Target outputs}
+The target sequence, i.e. the desired output sequence, consists of exactly the input sequence, except for the last vector and without the last bit of each vector (i.e. the delimiters are removed). The target sequence therefore consists of $1$ to $20$ vectors each containing $8$ bits.
+
+During the output phase, the network is presented only with zeros as the input.
+
+\subsubsection{Batching}
+The training of the network was done in batches. This means that the calculation of the loss function includes multiple input/output pairs at the same time. In our case, the batch size was $32$, meaning that the network was presented with $32$ input sequences before its weights were updated. Note that within one batch, all sequences have the same length. We trained the network for $31,300$ batches, meaning that the network was presented with $1,001,600$ sequences of varying length.
+
+\subsubsection{Training}
+For training, we used a standard Adam optimizer with a learning rate of $0.001$. We also used global norm clipping \cite{global-norm-clipping} for the gradients, with a threshold norm of $50$.
+
+For the loss function, we used binary cross-entropy for every bit in the output separately. These values are then summed and the result is divided by the batch size ($32$).
+
+\subsubsection{Validation}
+During training, we continually evaluated the performance of the network on a validation set. For this, the validation set was created before the training started and independently from the training data. The validation set contained $640$ pairs of input and target sequences in the same format as for training (described above in \autoref{sc-copy-inputs}). Note that no batching was performed, i.e. the batch size for validation was $1$. This means that the lengths of each of the $640$ sequences are independent from each other (in contrast with the training data, where all sequences in a batch must have the same length).
+
+The validation was performed every $200$ batches. The error metric we used for validation was the average number of incorrect predictions per sequence. This means that for each sequence, the number of mistakes is counted. These mistake counts are then summed and divided by $640$.
+
+\subsection{Repeat Copy}
+The repeat copy task is very similar to the copy task, but is made more challenging by the fact that the network has to repeat its output a fixed number of times. We will describe the differences to the copy task in more detail.
+
+\subsubsection{Network inputs}
+An input to the network consists of a sequence of 8-bit vectors plus two delimiter flags at the end of each vector. Therefore, each vector contains ten elements, where the first eight elements are sampled uniformly from $\{0,1\}$ and the last two are always zero.
+
+At the end of the sequence, we add a delimiter vector containing ten elements. This vector indicates to the network that the input sequence is now over, and also defines how often the network should repeat the input sequence. The first nine elements of the delimiter vector are always $1$. The last value is a number $n$ uniformly uniformly sampled from the set $\{0.1, 0.2, \ldots, 0.9, 1.0\}$. This number indicates to the network how often it should repeat its input. A value $n$ means that the network should repeat $10n$ times. In other words, the number of repetitions is uniformly sampled from the set $\{1, \ldots, 10\}$.
+
+One input sequence can contain between $1$ and $10$ input vectors, plus the delimiter vector. The sequence length is sampled uniformly at random. The final input dimensions are therefore between $2$ and $11$ vectors, each containing $10$ elements.
+
+\subsubsection{Target outputs}
+As explained before, the target outputs are identical to the inputs without delimiter flags and without the delimiter vector, repeated $10n$ times. The target output dimension is therefore $1$ to $10$ vectors, each containing $8$ elements.
+
+\subsection{Associative Recall}
+While the previous two tasks can be used to study if the NTM is able to interact correctly with its memory, the associative recall tasks tests whether it can learn associations between its input elements. This is done by showing a sequence of items\todo{define item} to the network, and a query item which was part of the sequence. The task for the network is to output the item in the sequence that comes directly after the query item.
+
+\subsubsection{Network inputs}
+The input sequence contains a sequence of 6-bit vectors plus a delimiter flag at the end of each vector. The vectors in the sequence thus have seven elements, the first $6$ of which are sampled uniformly at random from the set $\{0, 1\}$. The seventh and last value is always zero. We mentally group these vectors in groups of three contiguous vectors. We call a group of three contiguous vectors an item. The number of vectors is always divisible by three and between $6$ and $18$ -- in fact, the number of items is sampled uniformly at random from the set $\{2, 3, \ldots, 6\}$. Items do not overlap.
+
+After the input vectors, the input sequence contains a delimiter vector consisting of seven elements, all of which are $1$.
+
+After this delimiter vector, the input sequence includes one of the items from the input vectors, called the query item. The query item will never be the last item from the input vectors.
+
+After the three vectors from the query item, the input sequence includes another delimiter vector.
+
+We conclude that all vectors in the input sequence have $7$ elements, and the number of vectors in the sequence is always between $6 + 1 + 3 + 1 = 11$ and $18 + 1 + 3 + 1 = 23$\todo[inline]{Better summarized in words, e.g. 6 to 18 input vectors, 3 query vectors, and 2 delimiter vectors}.
+
+\subsubsection{Target outputs}
+The target sequence always consist of three vectors, which all have $6$ bits. These are the vectors from the item directly after the query item.
+
+\subsection{Sorting}\todo[inline]{Better emphasize more on this part. For the input, what is the length of each vector, and the number of vectors in a sequence? Will the vectors in a sequence are sorted? Are there same vectors in a sequence? For training and validation, how to calculate loss, and what error metric is used?}
+We now quickly describe a fourth task which was devised by us in order to test the NTM on an everyday problem: Sorting. The task is easily described: It works exactly like the copy task, except that the target outputs are sorted in lexicographical order. For example, given the input vectors $[1, 0, 0], [0, 1, 1], [1, 0, 1]$, the correct output would be $[0, 1, 1], [1, 0, 0],  [1, 0, 1]$. We first sort by the first bit. Any ties are resolved by comparing the second bit. Any ties here are resolved by comparing the third bit, and so on.
+
+\section{Results}
+\textit{We show the results of our approaches and the comparison among them.}
+
+
+
+\taskFigure{../figures/copy_task.pdf}
+
+\taskFigure{../figures/repeat_copy_task.pdf}
+
+\taskFigure{../figures/associative_recall_task.pdf}
+
+\taskFigure{../figures/sorting_task.pdf}
+
+\section{Discussion}
+\textit{We answer our research question based on the results.}
+
+We check if we were able to replicate the results from \cite{implementing-ntm}. Possibly we will also check the performance of the DNC (from \cite{original-dnc}) compared to the NTM.
+
+We will discuss reasons for the performance of the NTM on the tasks.
+
+\section{Conclusion}
+\textit{We discuss the contribution and limitation of our work, and further direction of this field.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% hier werden - zum Ende des Textes - die bibliographischen Referenzen
+% eingebunden
+%
+% Insbesondere stehen die eigentlichen Informationen in der Datei
+% ``bib.bib''
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\bibliographystyle{plain}
+\addcontentsline{toc}{section}{Bibliography}% Add to the TOC
+\bibliography{bib}
+
+
+\end{document}

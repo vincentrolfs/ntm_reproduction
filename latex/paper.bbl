@@ -1,0 +1,72 @@
+\begin{thebibliography}{10}
+
+\bibitem{lstm-forget}
+Gaurav Arora, Afshin Rahimi, and Timothy Baldwin.
+\newblock Does an {LSTM} forget more than a {CNN}? an empirical study of
+  catastrophic forgetting in {NLP}.
+\newblock In {\em Proceedings of the The 17th Annual Workshop of the
+  Australasian Language Technology Association}, pages 77--86, Sydney,
+  Australia, 4--6 December 2019. Australasian Language Technology Association.
+
+\bibitem{ntm-github}
+Mark Collier.
+\newblock {NeuralTuringMachine}.
+\newblock \url{https://github.com/MarkPKCollier/NeuralTuringMachine}, 2018.
+
+\bibitem{implementing-ntm}
+Mark Collier and Joeran Beel.
+\newblock Implementing neural turing machines.
+\newblock {\em International Conference on Artificial Neural Networks, ICANN.},
+  2018.
+
+\bibitem{original-ntm}
+Alex Graves, Greg Wayne, and Ivo Danihelka.
+\newblock Neural turing machines, 2014.
+
+\bibitem{original-dnc}
+Alex Graves, Greg Wayne, Malcolm Reynolds, Tim Harley, Ivo Danihelka, Agnieszka
+  Grabska-Barwi{\'{n}}ska, Sergio~G{\'{o}}mez Colmenarejo, Edward Grefenstette,
+  Tiago Ramalho, John Agapiou, Adri{\`{a}}~Puigdom{\`{e}}nech Badia,
+  Karl~Moritz Hermann, Yori Zwols, Georg Ostrovski, Adam Cain, Helen King,
+  Christopher Summerfield, Phil Blunsom, Koray Kavukcuoglu, and Demis Hassabis.
+\newblock Hybrid computing using a neural network with dynamic external memory.
+\newblock {\em Nature}, 538(7626):471--476, October 2016.
+
+\bibitem{global-norm-clipping}
+Razvan Pascanu, Tomas Mikolov, and Yoshua Bengio.
+\newblock On the difficulty of training recurrent neural networks.
+\newblock In Sanjoy Dasgupta and David McAllester, editors, {\em Proceedings of
+  the 30th International Conference on Machine Learning}, volume~28 of {\em
+  Proceedings of Machine Learning Research}, pages 1310--1318, Atlanta,
+  Georgia, USA, 17--19 Jun 2013. PMLR.
+
+\bibitem{RNNs-Turing-complete}
+Hava~T Siegelmann and Eduardo~D Sontag.
+\newblock On the computational power of neural nets.
+\newblock In {\em Proceedings of the fifth annual workshop on Computational
+  learning theory}, pages 440--449, 1992.
+
+\bibitem{turing}
+Alan~Mathison Turing.
+\newblock On computable numbers, with an application to the
+  entscheidungsproblem.
+\newblock {\em J. of Math}, 58(345-363):5, 1936.
+
+\bibitem{turing1938}
+Alan~Mathison Turing.
+\newblock On computable numbers, with an application to the
+  entscheidungsproblem. a correction.
+\newblock {\em Proceedings of the London Mathematical Society}, 2(1):544--546,
+  1938.
+
+\bibitem{von}
+John Von~Neumann.
+\newblock First draft of a report on the edvac.
+\newblock {\em IEEE Annals of the History of Computing}, 15(4):27--75, 1993.
+
+\bibitem{ntm-tf2-github}
+wchen342.
+\newblock {NeuralTuringMachine - TF 2.0}.
+\newblock \url{https://github.com/wchen342/NeuralTuringMachine}, 2019.
+
+\end{thebibliography}

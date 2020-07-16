@@ -1,3 +1,4 @@
+cd ..
 python3 evaluate_results.py config/associative_recall_task.json5   --load_validation_results outputs/associative_recall_task/validation_results_1594334700_31299/validation_results.pickle    --load_losses outputs/associative_recall_task/losses_1594334700_31299/losses.pickle
 python3 evaluate_results.py config/copy_task.json5 --load_validation_results outputs/copy_task/validation_results_1590739088_31299/validation_results.pickle  --load_losses outputs/copy_task/losses_1590739087_31299/losses.pickle
 python3 evaluate_results.py config/sorting_task.json5  --load_validation_results outputs/sorting_task/validation_results_1593899329_31299/validation_results.pickle  --load_losses outputs/sorting_task/losses_1593899329_31299/losses.pickle

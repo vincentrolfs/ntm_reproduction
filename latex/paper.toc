@@ -1,0 +1,27 @@
+\babel@toc {english}{}
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {section}{\numberline {2}Background}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Turing Machines}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Memory Augmented Neural Networks}{3}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Long Short-Term Memory}{3}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Neural Turing Machines}{4}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}Differentiable Neural Computer}{5}{subsubsection.2.2.3}
+\contentsline {section}{\numberline {3}Approach}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}Copy}{6}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Network inputs}{6}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Target outputs}{6}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Batching}{7}{subsubsection.3.1.3}
+\contentsline {subsubsection}{\numberline {3.1.4}Training}{7}{subsubsection.3.1.4}
+\contentsline {subsubsection}{\numberline {3.1.5}Validation}{7}{subsubsection.3.1.5}
+\contentsline {subsection}{\numberline {3.2}Repeat Copy}{7}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Network inputs}{8}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Target outputs}{8}{subsubsection.3.2.2}
+\contentsline {subsection}{\numberline {3.3}Associative Recall}{8}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Network inputs}{8}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Target outputs}{9}{subsubsection.3.3.2}
+\contentsline {subsection}{\numberline {3.4}Sorting}{9}{subsection.3.4}
+\contentsline {section}{\numberline {4}Results}{10}{section.4}
+\contentsline {section}{\numberline {5}Discussion}{12}{section.5}
+\contentsline {section}{\numberline {6}Conclusion}{12}{section.6}
+\contentsline {section}{Bibliography}{13}{section.6}
