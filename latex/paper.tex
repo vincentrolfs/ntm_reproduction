@@ -332,7 +332,7 @@ One input sequence can contain between $1$ and $10$ input vectors, plus the deli
 As explained before, the target outputs are identical to the inputs without delimiter flags and without the delimiter vector, repeated $10n$ times. The target output dimension is therefore $1$ to $10$ vectors, each containing $8$ elements.
 
 \subsection{Associative Recall}
-While the previous two tasks can be used to study if the NTM is able to interact correctly with its memory, the associative recall tasks tests whether it can learn associations between its input elements. This is done by showing a sequence of items\todo{define item} to the network, and a query item which was part of the sequence. The task for the network is to output the item in the sequence that comes directly after the query item.
+While the previous two tasks can be used to study if the NTM is able to interact correctly with its memory, the associative recall tasks tests whether it can learn associations between its input elements. This is done by showing a sequence of items to the network, and a query item which was part of the sequence. The task for the network is to output the item in the sequence that comes directly after the query item. The term "item" and the details of this task are explained in the following sections.
 
 \subsubsection{Network inputs}
 The input sequence contains a sequence of 6-bit vectors plus a delimiter flag at the end of each vector. The vectors in the sequence thus have seven elements, the first $6$ of which are sampled uniformly at random from the set $\{0, 1\}$. The seventh and last value is always zero. We mentally group these vectors in groups of three contiguous vectors. We call a group of three contiguous vectors an item. The number of vectors is always divisible by three and between $6$ and $18$ -- in fact, the number of items is sampled uniformly at random from the set $\{2, 3, \ldots, 6\}$. Items do not overlap.
@@ -343,13 +343,15 @@ After this delimiter vector, the input sequence includes one of the items from t
 
 After the three vectors from the query item, the input sequence includes another delimiter vector.
 
-We conclude that all vectors in the input sequence have $7$ elements, and the number of vectors in the sequence is always between $6 + 1 + 3 + 1 = 11$ and $18 + 1 + 3 + 1 = 23$\todo[inline]{Better summarized in words, e.g. 6 to 18 input vectors, 3 query vectors, and 2 delimiter vectors}.
+We conclude that all vectors in the input sequence have $7$ elements, and the number of vectors in the sequence is always between $6 + 1 + 3 + 1 = 11$ and $18 + 1 + 3 + 1 = 23$: We have $16$ to $8$ input vectors, $2$ delimiter vectors, and $3$ query vectors.
 
 \subsubsection{Target outputs}
 The target sequence always consist of three vectors, which all have $6$ bits. These are the vectors from the item directly after the query item.
 
-\subsection{Sorting}\todo[inline]{Better emphasize more on this part. For the input, what is the length of each vector, and the number of vectors in a sequence? Will the vectors in a sequence are sorted? Are there same vectors in a sequence? For training and validation, how to calculate loss, and what error metric is used?}
+\subsection{Sorting}
 We now quickly describe a fourth task which was devised by us in order to test the NTM on an everyday problem: Sorting. The task is easily described: It works exactly like the copy task, except that the target outputs are sorted in lexicographical order. For example, given the input vectors $[1, 0, 0], [0, 1, 1], [1, 0, 1]$, the correct output would be $[0, 1, 1], [1, 0, 0],  [1, 0, 1]$. We first sort by the first bit. Any ties are resolved by comparing the second bit. Any ties here are resolved by comparing the third bit, and so on.
+
+The parameters of this task are the same as for the copy task: For example, here are $8$ bits in every vector, and the length of every sequence is uniformly sampled to be between $1$ and $20$ (plus delimiter vectors, the rules for which are exactly the same as for the Copy task). Note that this means that a sequence may contain the same vector more than once. The goal for the agent is to sort the input sequence: This means that the inputs are unsorted, and the target outputs are sorted in lexicographical order.
 
 \section{Results}
 For each of the four tasks, we recorded the loss and the validation metric over the course of the training. As explained before, the loss used was the summed binary cross-entropy of every output bit, divided by the batch size. For validation, we used a validation set of 640 sequences and calculated the average number of (bitwise) mistakes per sequence.
@@ -383,13 +385,11 @@ The Sorting task  \autoref{fig-sort} shows a different picture: Here the trainin
 It is interesting to note that not spikes or artifacts occur for the validation metric recorded for the Sorting task. This might be because no "overtraining" has occured here -- the task of sorting a sequence of vectors seems to be more difficult than the other tasks, and takes much longer to train.
 
 \section{Discussion}
-\textit{We answer our research question based on the results.}
+Our goal was to replicate the results presented in \cite{implementing-ntm}. In that paper, the performances of the NTM on Copy task, Repeat Copy task and Associative Recall task are shown in Figure 4, 5 and 6 respectively, represented by the yellow curves labelled "NTM". These graphs show the same metric as our validation graphs and may be directly compared. Note however that we show a training time that is twice as long and we labelled the x-axis differently: We used the batch index for the labels, while \cite{implementing-ntm} uses the sequence number, which is just the batch index multiplied by the batch size ($32$).
 
-Compared to the graphs in \cite{implementing-ntm}, note that we show a training time that is twice as long and we labelled the x-axis differently: We use the batch index for the label, while \cite{implementing-ntm} uses the sequence number, which is just the batch index times the batch size ($32$).
+In general, our graphs show the same or better results compared to \cite{implementing-ntm}. We may conclude that we successfully replicated the results. More specifically, the graphs for the Copy Task show a very similar performance, while the graphs for the Repeat Copy task and the Associative Recall task show better performance in our case: The validation metric drops to zero more quickly.
 
-We check if we were able to replicate the results from \cite{implementing-ntm}. Possibly we will also check the performance of the DNC (from \cite{original-dnc}) compared to the NTM.
-
-We will discuss reasons for the performance of the NTM on the tasks.
+The reason for this could be the aforementioned normalization done in \cite{implementing-ntm}: In that paper, the median results for $10$ runs where reported, while our results only show one run (due to time constraints). It is possible that our results are just better for this particular run, and that the median would still be the same. The normalization could also explain why no artifacts in the validation metric are found in the graphs from \cite{implementing-ntm}.
 
 \section{Conclusion}
 \textit{We discuss the contribution and limitation of our work, and further direction of this field.}
