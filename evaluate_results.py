@@ -40,6 +40,11 @@ ax[1].set_xlabel("Batch index")
 ax[1].set_ylabel("Mistakes per sequence")
 ax[1].set_title("Validation: Average number of mistakes per sequence")
 
-plt.savefig("figures/" + CONFIG_NAME + ".pdf")
+ax[0].set_xticks(np.arange(0, 30000+1, 2500))
+ax[1].set_xticks(np.arange(0, 30000+1, 2500))
 
-#plt.show()
+plt.setp(ax[0].xaxis.get_majorticklabels(), rotation=45, ha='right')
+plt.setp(ax[1].xaxis.get_majorticklabels(), rotation=45, ha='right')
+
+plt.savefig("figures/" + CONFIG_NAME + ".pdf")
+# plt.show()

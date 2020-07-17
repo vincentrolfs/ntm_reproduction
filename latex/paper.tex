@@ -355,31 +355,37 @@ We now quickly describe a fourth task which was devised by us in order to test t
 For each of the four tasks, we recorded the loss and the validation metric over the course of the training. As explained before, the loss used was the summed binary cross-entropy of every output bit, divided by the batch size. For validation, we used a validation set of 640 sequences and calculated the average number of (bitwise) mistakes per sequence.
 
 \begin{figure}\label{fig-copy}
-\taskFigure{../figures/copy_task.pdf}
+\taskFigure{src/copy_task.pdf}
  \caption{Losses and mistakes made for the Copy task}
 \end{figure}
 
 \begin{figure}\label{fig-repeat-copy}
-\taskFigure{../figures/repeat_copy_task.pdf}
+\taskFigure{src/repeat_copy_task.pdf}
 \caption{Losses and mistakes made for the Repeat Copy task}
 \end{figure}
 
 \begin{figure}\label{fig-assoc}
-\taskFigure{../figures/associative_recall_task.pdf}
+\taskFigure{src/associative_recall_task.pdf}
 \caption{Losses and mistakes made for the Associative Recall task}
 \end{figure}
 
 \begin{figure}\label{fig-sort}
-\taskFigure{../figures/sorting_task.pdf}
+\taskFigure{src/sorting_task.pdf}
 \caption{Losses and mistakes made for the Sorting task}
 \end{figure}
 
-For the Copy task pictured in \autoref{fig-copy}, we can see that the Neural Turing Machine is able to learn to replicate its output. This is achieved without overfitting: The validation metric drops zero about as quickly as the training loss. However, for some reason both training loss and validation metric sometimes shoot to high values for short amounts of time. We don't know if the same behaviour can be observed in the implementation in \cite{implementing-ntm}, because there, the median losses and validations of $10$ runs where shown, which can hide such effects. It must be emphasized that these artifacts occur after a perfect training loss was achieved, so in a productive setting, they might not be that much of an issue, because training would stop before they can occur.
+For the Copy task pictured in \autoref{fig-copy}, we can see that the Neural Turing Machine is able to learn to replicate its output. This is achieved without overfitting: The validation metric drops to zero about as quickly as the training loss. However, we observe that both training loss and validation metric sometimes shoot to high values for short amounts of time. We don't know if the same behaviour can be observed in the implementation in \cite{implementing-ntm}, because there, the median losses and validations of $10$ runs where shown, which can hide such effects. It must be emphasized that these artifacts occur after a perfect training loss was achieved, so in a productive setting, they could be tolerable, because training would stop before they can occur. In fact this could be an example of "overtraining": Especially the validation metric shows the artifcat only after the task could already be considered solved.
 
 The Repeat Copy task in \autoref{fig-repeat-copy} and the Associative Recall task in \autoref{fig-assoc} show very similar results compared to the Copy task: The tasks are solved without overfitting, but some artifacts in losses and validation occur. 
 
+The Sorting task  \autoref{fig-sort} shows a different picture: Here the training takes much longer and the task is not perfectly solved at the end. However, it is nearly solved: The NTM reaches a validation of an average $2.75$ mistakes per sequence. Since a sequence consists of $1$ to $20$ vectors, each with $8$ bit, this is an average mistake rate of $\frac{2.75}{10.5 \cdot 8} \approx 3.3 \%$. It is possible that the performance could be further improved through longer training. Furthermore, we performed not finetuning of parameters at all -- we used the default parameters from the implementation in \citep{implementing-ntm}.
+
+It is interesting to note that not spikes or artifacts occur for the validation metric recorded for the Sorting task. This might be because no "overtraining" has occured here -- the task of sorting a sequence of vectors seems to be more difficult than the other tasks, and takes much longer to train.
+
 \section{Discussion}
 \textit{We answer our research question based on the results.}
+
+Compared to the graphs in \cite{implementing-ntm}, note that we show a training time that is twice as long and we labelled the x-axis differently: We use the batch index for the label, while \cite{implementing-ntm} uses the sequence number, which is just the batch index times the batch size ($32$).
 
 We check if we were able to replicate the results from \cite{implementing-ntm}. Possibly we will also check the performance of the DNC (from \cite{original-dnc}) compared to the NTM.
 
